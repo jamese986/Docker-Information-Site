@@ -3,4 +3,4 @@ This website was one of the first times I had used a Material Design approach. T
 
 ## Credits
 * [Material Design](https://material.io/design/)
-* [All Information](https://github.com/AndyR03)
+* [Andrew Rose - All Information](https://github.com/AndyR03)
