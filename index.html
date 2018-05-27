@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>An Introduction to Docker Security | Andrew Rose | P15224093</title>
+    <!-- stylesheets -->
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-light_blue.min.css" />
+    <link rel="stylesheet" href="styles.css">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZnPN2MlGPV4IpHBMjAxqnTgkA7i9501I&callback=initMap"></script>
+    <script src="scripts/map.js"></script>
+  </head>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <!--HEADER TITLE START -->
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h3>An Introduction to Docker Security | Andrew Rose | P15224093 </h3>
+          <img src="images/docker-logo.png" alt="docker logo">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <!-- HEADER TITLE END-->
+        <!-- NAVIGATION -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+          <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
+          <a href="#InstallPostInstallation" class="mdl-layout__tab">Install Docker &amp; Post Installation</a>
+          <a href="#Security" class="mdl-layout__tab">Docker Security</a>
+          <a href="#contactme" class="mdl-layout__tab">Contact Me</a>
+        </div>
+      </header>
+      <!-- END NAVIGATION  -->
+      <!-- First box with video -->
+      <main class="mdl-layout__content">
+        <div class="mdl-layout__tab-panel is-active" id="overview">
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+              <a href="https://youtu.be/V9IJj4MzZBc"><i class="material-icons">play_circle_filled</i></a>
+            </header>
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+              <div class="mdl-card__supporting-text">
+                <h4>What is Docker?</h4>
+                Click the video to find out more
+              </div>
+              <div class="mdl-card__actions">
+                <a href="#" class="mdl-button">Read our features</a>
+              </div>
+            </div>
+          </section>
+          <!-- END navigation -->
+          <!-- OVERVIEW PAGE START -->
+          <!-- Details box -->
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                <h4 class="mdl-cell mdl-cell--12-col">Introduction</h4>
+                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  <div class="section__circle-container__circle mdl-color--primary"></div>
+                </div>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>A quick history and description of Docker</h5>
+                  Docker originated in France and was created by a man called Solomon Hykes.  It was first shown to the public in 2013 and then released shortly afterwards.  It uses it’s own libcontainer library and is programmed mostly in the Go language.  However containers can be created with many of the current programming languages.
+                  In this document I will show the main vulnerabilities associated with the use of Docker Containers.  Following that I will relate some ways to remedy the situation and a Super-Container I have created to check the inside of Containers whilst still running to minimalism these problems.  We will also look at other super-containers for auditing purposes and commands which will give us snapshots of the current state of parts of the system.
+                  Docker is now an extremely popular way of running services on servers.  It allows an organisation to run what is in effect a very generic set of servers/hardware and yet be extremely flexible and easily configured for a different role in very little time and from a remote location some distance away.  This is a level of flexibility that could only have been dreamt of awhile ago.
+                  A few years ago a system would require a physical server or piece of hardware for each task.  Then virtualisation allowed many virtual servers to placed on one physical server.  However these needed to be installed and run almost as if they were still physical, and took time to boot up even when the host was already running thereby only really saving on hardware.  Now the detached, agent and firewall services can all be replicated on one general purpose server using Docker Containers.  These can initiated in milliseconds rather than minutes and taken down in the same time if required.
+                  The deployment of Docker Containers can be compared to sending an attachment in an email.
+                  Using remote system management tools such as Kubernetes and Portainer not just Containers but whole swarms of containers can be controlled from a distance.   A ready made image can be pulled down from a registry and then run on the host with very few commands in an extremely short time.
+                  This has led indirectly to an improvement in security, as organisations can now run more services on less hardware.  They can easily afford to run simultaneous hot standby systems with built in redundancy and the customer receives a service which is more robust and reliable.
+                  The down side to all this is that these small pieces of software have to share the host system’s kernel  because they only contain sufficient features to run the service it was intended for.  This sharing of the kernel is the weak point, as if one container is hacked then the intruder is not far from having root access to the whole set-up.
+                  Another aspect of system security is good management of the system, therefore ways of monitoring and maintaining it will also be accessed.  <a href="#">proident minim</a>.
+                </div>
+              </div>
+              <div class="mdl-card__actions">
+                <a href="#" class="mdl-button">Read our features</a>
+              </div>
+            </div>
+          </section>
+          <!--END details box -->
+          <!-- Technology box  -->
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text">
+                <h4>Equipment</h4>
+                A home computer or laptop with Ubuntu 17.04 will be required to practice these exercises.
+              </div>
+              <div class="mdl-card__actions">
+                <a href="#" class="mdl-button">Read our features</a>
+              </div>
+            </div>
+          </section>
+          <section class="section--footer mdl-color--white mdl-grid">
+            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
+            </div>
+            <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+              <h5>Lorem ipsum dolor sit amet</h5>
+              Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+            </div>
+            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+              <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
+            </div>
+            <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+              <h5>Lorem ipsum dolor sit amet</h5>
+              Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+            </div>
+          </section>
+        </div>
+        <!-- END Technology box  -->
+        <!-- END OVERVIEW PAGE  -->
+        <!-- INSTALL & POST INSTALLATION PAGE  -->
+        <!-- install docker -->
+        <div class="mdl-layout__tab-panel" id="InstallPostInstallation">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h4>Features</h4>
+              Minim duis incididunt est cillum est ex occaecat consectetur. Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+              <h4>Contents</h4>
+              <!-- Contents menu-->
+              <ul class="toc">
+                <a href="#Install">Install Docker</a>
+                <a href="#PostInstallation">Post Installation</a>
+                <a href="#InstallContainer">Install Container</a>
+                <a href="#Commands">Docker Commands</a>
+                <a href="#Updates">Latest Updates</a>
+              </ul>
+              <hr />
+              <!-- end of contents menu-->
+              <!--install section-->
+              <h5 id="Install">Quick Install Docker On Linux</h5>
+              <p>Follow the instructions below to get up and running with docker on linux</p>
+              <h6>#Quick Install</h6>
+              <pre><code>sudo curl -fsSL get.docker.com -o get-docker.sh</code></pre>
+              <pre><code>sudo sh get-docker.sh</code></pre>
+              <h6>#Add a user</h6>
+              <pre><code>sudo usermod -aG docker "your-user"</code></pre>
+              <h6>#Check installation</h6>
+              <pre><code>sudo docker run hello-world</code></pre>
+              <h6>#Another good check</h6>
+              <pre><code>sudo docker run -it ubuntu bash</code></pre>
+              <hr />
+              <!-- end of install section-->
+              <!-- Post install section-->
+              <h5 id="PostInstallation">Post Installation</h5>
+              <p>To create the docker group and add your user: Create the docker group.</p>
+              <pre><code>$ sudo groupadd docker</code></pre>
+              <p>Add your user to the docker group.</p>
+              <pre><code>$ sudo usermod -aG docker $USER</code></pre>
+              <p> Log out and log back in so that your group membership is re-evaluated. If testing on a virtual machine, it may be necessary to restart the virtual machine for changes to take effect.On a desktop Linux environment such as X Windows, log out of your session completely and then log back in.</p>
+              <pre><code>$ docker run hello-world</code></pre>
+              <hr />
+              <!-- end of Post install section-->
+              <!-- Install Container -->
+              <h5 id="InstallContainer">Install a Container</h5>
+              <p>Create an empty directory. Change directories (cd) into the new directory, create a file called Dockerfile, copy-and-paste the following content into that file, and save it. Take note of the comments that explain each statement in your new Dockerfile.</p>
+              <p># Set the working directory to /app</p>
+              <pre><code>WORKDIR /app</code></pre>
+              <p># Copy the current directory contents into the container at /app</p>
+              <pre><code>ADD . /app</code></pre>
+              <p># Install any needed packages specified in requirements.txt</p>
+              <pre><code>RUN pip install --trusted-host pypi.python.org -r requirements.txt</code></pre>
+              <p># Make port 80 available to the world outside this container</p>
+              <pre><code>EXPOSE 80</code></pre>
+              <p># Define environment variable</p>
+              <pre><code>ENV NAME World</code></pre>
+              <p># Run app.py when the container launches</p>
+              <pre><code>CMD ["python", "app.py"]</code></pre>
+              <hr />
+              <!-- end of Install container section-->
+              <!-- Docker commands section-->
+              <h5 id="Commands">Docker Commands</h5>
+              <pre><code>docker attach&#8594; Attach local standard input, output, and error streams to a running container</code></pre>
+              <pre><code>docker build&#8594; Build an image from a Dockerfile</code></pre>
+              <pre><code>docker checkpoint Manage checkpoints</code></pre>
+              <pre><code>docker commit&#8594; Create a new image from a container’s changes</code></pre>
+              <pre><code>docker config&#8594; Manage Docker configs</code></pre>
+              <pre><code>docker container&#8594;Manage containers</code></pre>
+              <pre><code>docker cp&#8594; Copy files/folders between a container and the local filesystem</code></pre>
+              <pre><code>docker create&#8594; Create a new container</code></pre>
+              <pre><code>docker deploy&#8594; Deploy a new stack or update an existing stack</code></pre>
+              <pre><code>docker diff&#8594; Inspect changes to files or directories on a container’s filesystem</code></pre>
+              <pre><code>docker events&#8594; Get real time events from the server</code></pre>
+              <pre><code>docker exec&#8594; Run a command in a running container</code></pre>
+              <pre><code>docker export&#8594; Export a container’s filesystem as a tar archive</code></pre>
+              <pre><code>docker history&#8594; Show the history of an image</code></pre>
+              <pre><code>docker image&#8594; Manage images</code></pre>
+              <pre><code>docker images&#8594; List images</code></pre>
+              <pre><code>docker import&#8594; Import the contents from a tarball to create a filesystem image</code></pre>
+              <pre><code>docker info&#8594; Display system-wide information</code></pre>
+              <pre><code>docker inspect&#8594; Return low-level information on Docker objects</code></pre>
+              <pre><code>docker kill&#8594; Kill one or more running containers</code></pre>
+              <pre><code>docker load&#8594; Load an image from a tar archive or STDIN</code></pre>
+              <pre><code>docker login&#8594; Log in to a Docker registry</code></pre>
+              <pre><code>docker logout&#8594; Log out from a Docker registry</code></pre>
+              <pre><code>docker logs&#8594; Fetch the logs of a container</code></pre>
+              <pre><code>docker network&#8594; Manage networks</code></pre>
+              <pre><code>docker network&#8594; Manage networks</code></pre>
+              <pre><code>docker node&#8594; Manage Swarm nodes</code></pre>
+              <pre><code>docker pause&#8594; Pause all processes within one or more containers</code></pre>
+              <pre><code>docker plugin&#8594; Manage plugins</code></pre>
+              <pre><code>docker port&#8594; List port mappings or a specific mapping for the container</code></pre>
+              <pre><code>docker ps&#8594; List containers</code></pre>
+              <pre><code>docker pull&#8594; Pull an image or a repository from a registry</code></pre>
+              <pre><code>docker push&#8594; Push an image or a repository to a registry</code></pre>
+              <pre><code>docker rename&#8594; Rename a container</code></pre>
+              <pre><code>docker restart&#8594; Restart one or more containers</code></pre>
+              <pre><code>docker rm&#8594; Remove one or more containers</code></pre>
+              <pre><code>docker rmi&#8594; Remove one or more images</code></pre>
+              <pre><code>docker run&#8594; Run a command in a new container</code></pre>
+              <pre><code>docker save&#8594; Save one or more images to a tar archive (streamed to STDOUT by default)</code></pre>
+              <pre><code>docker search&#8594; Search the Docker Hub for images</code></pre>
+              <pre><code>docker secret&#8594; Manage Docker secrets</code></pre>
+              <pre><code>docker service&#8594; Manage services</code></pre>
+              <pre><code>docker stack&#8594; Manage Docker stacks</code></pre>
+              <pre><code>docker start&#8594; Start one or more stopped containers</code></pre>
+              <pre><code>docker stats&#8594; Display a live stream of container(s) resource usage statistics</code></pre>
+              <pre><code>docker stop&#8594; Stop one or more running containers</code></pre>
+              <pre><code>docker swarm&#8594; Manage Swarm</code></pre>
+              <pre><code>docker system&#8594; Manage Docker</code></pre>
+              <pre><code>docker tag&#8594; Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</code></pre>
+              <pre><code>docker top&#8594; Display the running processes of a container</code></pre>
+              <pre><code>docker unpause&#8594; Unpause all processes within one or more containers</code></pre>
+              <pre><code>docker update&#8594; Update configuration of one or more containers</code></pre>
+              <pre><code>docker version&#8594; Show the Docker version information</code></pre>
+              <pre><code>docker volume&#8594; Manage volumes</code></pre>
+              <pre><code>docker wait&#8594; Block until one or more containers stop, then print their exit codes</code></pre>
+              <!-- end of Docker Commands section-->
+              <hr />
+              <!-- latest updates section -->
+              <h5 id="Updates">Latest Updates</h5>
+              <p>If you haven’t already, open a terminal and ssh into the machine where you run your manager node. For example, the tutorial uses a machine named manager1.Deploy Redis 3.0.6 to the swarm and configure the swarm with a 10 second update delay:</p>
+              <pre><code>$ docker service create \</code></pre>
+              <pre><code>--replicas 3 \</code></pre>
+              <pre><code>--name redis \</code></pre>
+              <pre><code>--update-delay 10s \</code></pre>
+              <pre><code>redis:3.0.6</code></pre>
+              <pre><code>0u6a4s31ybk7yw2wyvtikmu50</code></pre>
+              <!-- latest updates section -->
+            </div>
+          </section>
+        </div>
+        <!-- INSTALL & POST INSTALLATION PAGE END  -->
+        <!-- SECURITY PAGE START -->
+        <div class="mdl-layout__tab-panel" id="Security">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h3>Docker Security</h3>
+              <pre><code>$ docker service create \</code></pre>
+              <pre><code>--replicas 3 \</code></pre>
+              <pre><code>--name redis \</code></pre>
+              <pre><code>--update-delay 10s \</code></pre>
+              <pre><code>redis:3.0.6</code></pre>
+              <pre><code>0u6a4s31ybk7yw2wyvtikmu50</code></pre>
+              <hr />
+              <h4>Kernel Namespaces</h4>
+              <p>Namespaces assist in the isolation of containers and stop any processes bleeding into other containers or even the host system.  Containers have their own network stack which means they are in effect their own little operating system with just the minimum processes to run what they need.  They do not have access to the interfaces or sockets of others without the host system allowing this.  In which case they can send packets in the standard formats between each other in their virtual network.
+                Namespaces were introduced in July 2008 with the Linux kernel versions 2.6.15 to 2.6.26.
+                They are a more recent way of delivering OpenVZ a slightly older version of virtualisation.
+                Basically the problem is caused by the host’s root user having too much connectivity to the Container’s root.  This segregation is achieved by remapping the server’s user identification (UID) and group identification (GID) to totally different ranges within the Containers.  What we are trying to achieve is masking the visibility of the host’s processes by manipulation as this is where the most damage could occur.  Therefore what we want is a namespace with very little privileges outside the namespace but with root privileges inside the the namespace.  
+              </p>
+              <!-- next section -->
+              <hr />
+            
+              <!-- next section -->
+            </div>
+          </section>
+        </div>
+        <!-- SECURITY PAGE START -->
+        <!-- CONTACT ME START -->
+        <div class="mdl-layout__tab-panel" id="contactme">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h3>Contact Me</h3>
+              <h4>Mob: 07878787878</h4>
+              <h4><a href="mailto:P15224093@my365.dmu.ac.uk?Subject=Docker%Enquiry" target="_top">Message Me</a></h4>
+              <!-- Google Map Start-->
+              <h4>Find Us at | GH5.53</h4>
+              <div id="map"></div>
+            </div>
+          </section>
+        </div>
+        <!-- Footer Start -->
+        <footer class="mdl-mega-footer">
+          <div class="mdl-mega-footer--bottom-section">
+            <div class="mdl-logo">
+              More Information
+            </div>
+            <ul class="mdl-mega-footer--link-list">
+              <li><a href="https://github.com/AndyR03/">Git Hub Profile</a></li>
+              <li><a href="https://hub.docker.com/">Docker Hub Profile</a></li>
+              <li><a href="https://www.docker.com/">Docker Offical Website</a></li>
+              <li><a href="http://www.dmu.ac.uk/">DMU Homepage</a></li>
+            </ul>
+          </div>
+        </footer>
+        <!-- footer end -->
+        <!-- scripts -->
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <!-- scripts end -->
+      </main>
+    </div>
+  </body>
+</html>
